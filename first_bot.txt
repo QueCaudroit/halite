@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+import hlt
+from hlt import constants
+from hlt.positionals import Direction
+import random
+import logging
+
+""" <<<Game Begin>>> """
+game = hlt.Game()
+game_map = game.game_map
+
+def get_task(ship, game_map, my_dropoffs_positions, last_task):
+    #if ship.halite_amount > 900:
+    #    return 'deliver'
+    #if game_map[ship.position].halite_amount > ship.halite_amount / 10:
+    #    return 'collect'
+    if ship.position in my_dropoffs_positions:
+        return 'random safe move'
+    if ship.halite_amount > 900:
+        return 'deliver'
+    if game_map[ship.position].halite_amount >= 100:
+        return 'collect'
+    if ship.id in last_task and last_task[ship.id] == 'deliver':
+        return 'deliver'
+    return 'random safe move'
+    
+def random_safe_move(ship, all_ships):
+    directions = [Direction.North, Direction.South, Direction.East, Direction.West]
+    possible_directions = []
+    all_ships_pos = list(map(lambda x: x.position, all_ships))
+    for direction in directions:
+        position = ship.position.directional_offset(direction)
+        if position not in all_ships_pos:
+            possible_directions.append(direction)
+    if len(possible_directions) == 0:
+        return Direction.Still
+    direction = random.choice(possible_directions)
+    ship.position = ship.position.directional_offset(direction)
+    return direction
+
+def deliver(ship, all_ships, my_dropoffs_positions):
+    directions = [Direction.North, Direction.South, Direction.East, Direction.West]
+    possible_directions = []
+    all_ships_pos = list(map(lambda x: x.position, all_ships))
+    for direction in directions:
+        position = ship.position.directional_offset(direction)
+        if position not in all_ships_pos:
+            possible_directions.append(direction)
+    dist = 7000
+    for dropoff_pos in my_dropoffs_positions:
+        vect = dropoff_pos - ship.position
+        vect_n = game_map.normalize(vect)
+        if vect_n.x > game_map.width / 2:
+            move_x = vect_n.x - game_map.width
+        else: 
+            move_x = vect_n.x
+        if vect_n.y > game_map.height / 2:
+            move_y = vect_n.y - game_map.height
+        else: 
+            move_y = vect_n.y
+        new_dist = abs(move_x) + abs(move_y)
+        if new_dist >= dist:
+            continue
+        dist = new_dist
+        best_move_x = move_x
+        best_move_y = move_y
+    possible_moves = []
+    if best_move_x > 0 and Direction.East in possible_directions:
+        possible_moves = possible_moves + [Direction.East] * int(best_move_x)
+    if best_move_x < 0 and Direction.West in possible_directions:
+        possible_moves = possible_moves + [Direction.West] * int(-best_move_x)
+    if best_move_y > 0 and Direction.South in possible_directions:
+        possible_moves = possible_moves + [Direction.South] * int(best_move_y)
+    if best_move_y < 0 and Direction.North in possible_directions:
+        possible_moves = possible_moves + [Direction.North] * int(-best_move_y)
+    if len(possible_moves) == 0:
+        return Direction.Still
+    direction = random.choice(possible_moves)
+    ship.position = ship.position.directional_offset(direction)
+    return direction
+
+            
+last_task = {}
+game.ready("MyPythonBot")
+my_id = game.my_id
+logging.info("Successfully created bot! My Player ID is {}.".format(my_id))
+""" <<<Game Loop>>> """
+
+while True:
+    game.update_frame()
+    me = game.players[my_id]
+    my_dropoffs_positions = list(map(lambda x: x.position, me.get_dropoffs()))
+    my_dropoffs_positions.append(me.shipyard.position)
+    game_map = game.game_map
+    command_queue = []
+    my_ships = me.get_ships()
+    all_ships = []
+    for i, player in game.players.items():
+        all_ships = all_ships + player.get_ships()
+    for ship in me.get_ships():
+        task = get_task(ship, game_map, my_dropoffs_positions, last_task)
+        logging.info((ship.id, ship.halite_amount, task))
+        last_task[ship.id] = task
+        if task == 'collect':
+            command_queue.append(ship.stay_still())
+        if task == 'deliver':
+            command_queue.append(ship.move(deliver(ship, all_ships, my_dropoffs_positions)))
+        if task == 'random safe move':
+            command_queue.append(ship.move(random_safe_move(ship, all_ships)))
+    if game.turn_number <= 200 and me.halite_amount >= constants.SHIP_COST and not game_map[me.shipyard].is_occupied:
+        command_queue.append(me.shipyard.spawn())
+
+    game.end_turn(command_queue)
+
+
