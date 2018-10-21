@@ -1,0 +1,13 @@
+
+Turn 19
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Last input received was:
+
+
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 97, in <module>
+    command_queue.append(ship.move(deliver(ship, game_map, my_dropoffs_positions)))
+TypeError: deliver() missing 1 required positional argument: 'spots_taken'
+

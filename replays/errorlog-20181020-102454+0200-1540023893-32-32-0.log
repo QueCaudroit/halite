@@ -1,0 +1,12 @@
+
+Initialization Phase
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 9, in <module>
+    game = hlt.Game()
+  File "/home/quentin/halite/hlt/networking.py", line 39, in __init__
+    if player.id != self.my_id:
+AttributeError: 'int' object has no attribute 'id'
+

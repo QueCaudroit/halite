@@ -1,0 +1,13 @@
+
+Turn 1
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Last input received was:
+
+
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 72, in <module>
+    best_spots = get_best_halite(len(my_ships))
+NameError: name 'get_best_halite' is not defined
+

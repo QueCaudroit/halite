@@ -1,0 +1,10 @@
+
+Initialization Phase
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Bot error output was:
+  File "MyBot.py", line 102
+    if task == 'chose_spot'
+                          ^
+SyntaxError: invalid syntax
+

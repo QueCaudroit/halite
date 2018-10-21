@@ -1,0 +1,17 @@
+
+Turn 4
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Last input received was:
+
+
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 92, in <module>
+    task = get_task(ship, game_map, my_dropoffs_positions, last_task, best_spots)
+  File "MyBot.py", line 25, in get_task
+    if ship.target not in best_spots:
+  File "/home/quentin/halite/hlt/positionals.py", line 103, in __eq__
+    return self.x == other.x and self.y == other.y
+AttributeError: 'NoneType' object has no attribute 'x'
+

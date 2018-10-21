@@ -1,0 +1,15 @@
+
+Turn 2
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Last input received was:
+
+
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 74, in <module>
+    command_queue.append(ship.move(random_safe_move(ship, all_ships)))
+  File "MyBot.py", line 34, in random_safe_move
+    return game_map.naive_navigate(ship, random.choice(possible_vect), 0)
+AttributeError: 'list' object has no attribute 'naive_navigate'
+

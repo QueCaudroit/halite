@@ -1,0 +1,19 @@
+
+Turn 5
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Last input received was:
+
+
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 127, in <module>
+    command_queue.append(ship.move(chose_spot(ship, game_map, best_spots, spots_taken)))
+  File "MyBot.py", line 71, in chose_spot
+    return travel_to_spot(ship, game_map)
+  File "MyBot.py", line 74, in travel_to_spot
+    new_dist, vect = game_map.calculate_distance(ship.position, ship.target)
+  File "/home/quentin/halite/hlt/game_map.py", line 187, in calculate_distance
+    vect = target - source
+TypeError: unsupported operand type(s) for -: 'NoneType' and 'Position'
+

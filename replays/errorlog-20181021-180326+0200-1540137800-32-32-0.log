@@ -1,0 +1,20 @@
+
+Turn 144
+================================================================
+warning: owned entities 11, 27 collided on cell (10, 22) as the result of moves on this turn
+At command 1 of 15:
+>>> 1   m 11 s
+    2   m 5 s
+    3   m 3 e
+
+
+Turn 242
+================================================================
+warning: owned entities 31, 5 collided on cell (10, 20) as the result of moves on this turn
+At command 3 of 11:
+    1   m 24 n
+    2   m 3 e
+>>> 3   m 31 e
+    4   m 9 s
+    5   m 21 e
+

@@ -1,0 +1,35 @@
+
+Turn 4
+================================================================
+warning: owned entities 4, 0 collided on cell (23, 17) as the result of moves on this turn
+At command 1 of 4:
+>>> 1   m 4 s
+    2   m 0 o
+    3   m 2 o
+
+
+Turn 5
+================================================================
+warning: owned entities 6, 2 collided on cell (23, 15) as the result of moves on this turn
+At command 1 of 3:
+>>> 1   m 6 n
+    2   m 2 o
+    3   g
+
+
+Turn 21
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Last input received was:
+
+
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 72, in <module>
+    command_queue.append(ship.move(deliver(ship, game_map, my_dropoffs_positions)))
+  File "MyBot.py", line 40, in deliver
+    new_dist, vect = game_map.calculate_distance(ship.position, dropoff_pos)
+  File "/home/quentin/halite/hlt/game_map.py", line 178, in calculate_distance
+    if vect_n.x > game_map.width / 2:
+NameError: name 'game_map' is not defined
+

@@ -1,0 +1,13 @@
+
+Turn 1
+================================================================
+error: communication error with bot: read failed, errno was: 0 (Success)
+Last input received was:
+
+
+Bot error output was:
+Traceback (most recent call last):
+  File "MyBot.py", line 72, in <module>
+    my_ships.sort(lambda x: x.id, reverse=True)
+TypeError: must use keyword argument for key function
+

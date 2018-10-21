@@ -1,0 +1,48 @@
+INFO:root:Successfully created bot! My Player ID is 0.
+INFO:root:=============== TURN 001 ================
+INFO:root:[]
+INFO:root:=============== TURN 002 ================
+INFO:root:[Position(31, 31)]
+INFO:root:(1, 0, 'chose_spot')
+INFO:root:=============== TURN 003 ================
+INFO:root:[Position(31, 30), Position(31, 31)]
+INFO:root:(3, 0, 'chose_spot')
+INFO:root:(1, 0, 'collect')
+INFO:root:=============== TURN 004 ================
+INFO:root:[Position(31, 31), Position(23, 17), Position(7, 16)]
+INFO:root:(1, 68, 'collect')
+INFO:root:(5, 0, 'chose_spot')
+INFO:root:(3, 0, 'collect')
+INFO:root:=============== TURN 005 ================
+INFO:root:[Position(23, 17), Position(7, 16), Position(8, 17), Position(24, 16)]
+INFO:root:(1, 119, 'collect')
+INFO:root:(3, 65, 'collect')
+INFO:root:(7, 0, 'chose_spot')
+INFO:root:(5, 0, 'collect')
+INFO:root:problem!
+INFO:root:=============== TURN 006 ================
+INFO:root:[Position(7, 16), Position(8, 17), Position(24, 16), Position(23, 15), Position(8, 15)]
+INFO:root:(1, 158, 'collect')
+INFO:root:(3, 114, 'collect')
+INFO:root:(5, 66, 'collect')
+INFO:root:(9, 0, 'chose_spot')
+INFO:root:(7, 0, 'collect')
+INFO:root:problem!
+INFO:root:=============== TURN 007 ================
+INFO:root:[Position(24, 16), Position(9, 16), Position(22, 16), Position(23, 15), Position(8, 15)]
+INFO:root:(1, 187, 'chose_spot')
+INFO:root:(3, 151, 'collect')
+INFO:root:(5, 115, 'collect')
+INFO:root:(7, 49, 'collect')
+INFO:root:(9, 0, 'chose_spot')
+INFO:root:problem!
+INFO:root:problem!
+INFO:root:=============== TURN 008 ================
+INFO:root:[Position(24, 16), Position(9, 16), Position(22, 16), Position(23, 15), Position(8, 15)]
+INFO:root:(3, 179, 'chose_spot')
+INFO:root:(5, 152, 'collect')
+INFO:root:(7, 86, 'collect')
+INFO:root:(1, 0, 'chose_spot')
+INFO:root:(9, 0, 'collect')
+INFO:root:problem!
+INFO:root:problem!
